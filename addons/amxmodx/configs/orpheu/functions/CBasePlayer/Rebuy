@@ -1,0 +1,18 @@
+{
+    "name" : "Rebuy",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x53,0x55,0x56,0x8b,"*",0x57,0x8B,"*","*","*","*","*",0xC6,"*","*","*","*","*","*",0x50,0xE8,"*","*","*","*",0x83]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer5RebuyEv"
+        }
+    ]
+}

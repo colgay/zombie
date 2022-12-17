@@ -1,0 +1,23 @@
+{
+    "name" : "IsOnLadder",
+    "class" : "CBasePlayer",
+    "library" : "mod",
+	"info" : "offset 0xA07A0",
+	"return" :
+    {
+        "type" : "BOOL"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+            "mod" : "cstrike",
+            "value" : [0x8B,"*","*",0x33,"*",0x83,"*","*","*","*","*","*",0x0F,"*","*",0x8B,"*",0xC3,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x83,"*","*",0x53]
+        },
+        {
+            "os" : "linux",
+            "mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer10IsOnLadderEv"
+        }
+    ]
+}

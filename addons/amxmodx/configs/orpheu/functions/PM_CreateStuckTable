@@ -1,0 +1,17 @@
+{
+	"name" : "PM_CreateStuckTable",
+	"library" : "mod",
+	"identifiers" :
+	[
+		{
+			"os" : "windows",
+			"mod" : "cstrike",
+			"value" : [0x83,0xEC,0x0C,0xB9,0xA2,0x00,0x00,0x00,0xD9,0x05,"*","*","*","*",0x56,0x57,0x33,0xC0,0xBF]
+		},
+		{
+			"os" : "linux",
+			"mod" : "cstrike",
+			"value" : "PM_CreateStuckTable"
+		}
+	]
+}

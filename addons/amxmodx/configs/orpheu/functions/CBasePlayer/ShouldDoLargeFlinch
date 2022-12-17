@@ -1,0 +1,31 @@
+{
+    "name" : "ShouldDoLargeFlinch",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"arguments" :
+	[
+		{
+			"type" : "int"
+		},
+		{
+			"type" : "int"
+		}
+	],
+	"return" :
+    {
+        "type" : "BOOL"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x8B,"*","*",0x8B,"*","*","*","*","*",0xF6,"*","*",0x75,"*",0x8B,"*","*","*",0x83,"*","*",0x74,"*",0x83,"*","*",0x74,"*",0x8B]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer19ShouldDoLargeFlinchEii"
+        }
+    ]
+}

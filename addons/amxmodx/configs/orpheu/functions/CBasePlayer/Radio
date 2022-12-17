@@ -1,0 +1,40 @@
+{
+    "name" : "Radio",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+    "info" : "Sends radio sound and obtional message to teamates",
+    "arguments" :
+    [
+        {
+            "type" : "char *",
+            "info" : "msg_id"
+        },
+        {
+            "type" : "char *",
+            "info" : "msg_verbose"
+        },
+		{
+            "type" : "short",
+            "info" : "pitch"
+        },
+		{
+            "type" : "bool",
+            "info" : "showIcon"
+        }
+    ],
+    "identifiers":
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x53,0x55,0x56,0x8B,"*",0x57,0x8B,"*",0xFF,"*","*","*","*","*",0x85]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer5RadioEPKcS1_sb"
+        }
+    ]
+}
+
+

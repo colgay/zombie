@@ -1,0 +1,22 @@
+{
+    "name" : "IsBombGuy",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"return" :
+    {
+        "type" : "BOOL"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x56,0x8B,"*",0x8B,"*","*","*","*","*",0x8B,"*",0xFF,"*","*",0x85,"*",0x75,"*",0x5E,0xC3]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer9IsBombGuyEv"
+        }
+    ]
+}

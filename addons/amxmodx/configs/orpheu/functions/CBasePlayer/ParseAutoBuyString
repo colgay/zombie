@@ -1,0 +1,30 @@
+{
+    "name" : "ParseAutoBuyString",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"arguments" :
+	[
+		{
+			"type" : "const char *"
+		},
+		{
+			"type" : "bool"
+		},
+		{
+			"type" : "bool"
+		}
+	],
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x83,"*","*",0x8B,"*","*","*",0x53,0x33,"*",0x8B,"*",0x3B,"*",0x89,"*","*","*",0x89,"*","*","*",0x0F,"*","*","*","*","*",0x38]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer18ParseAutoBuyStringEPKcRbS2_"
+        }
+    ]
+}

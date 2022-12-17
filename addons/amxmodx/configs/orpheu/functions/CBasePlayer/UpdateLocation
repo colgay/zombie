@@ -1,0 +1,24 @@
+{
+    "name" : "UpdateLocation",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"arguments" :
+	[
+		{
+			"type" : "bool"
+		}
+	],
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x8A,"*","*","*",0x53,0x55,0x56,0x84,"*",0x57,0x8B,"*",0x75,"*",0xA1,"*","*","*","*",0xD9]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer14UpdateLocationEb"
+        }
+    ]
+}

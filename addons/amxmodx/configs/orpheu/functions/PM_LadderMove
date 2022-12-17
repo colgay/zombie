@@ -1,0 +1,24 @@
+{
+	"name" : "PM_LadderMove",
+	"library" : "mod",
+	"arguments" :
+	[
+		{
+			"type" : "physent_s *",
+			"info" : "pLadder"
+		}
+	],
+	"identifiers" :
+	[
+		{
+			"os" : "windows",
+			"mod" : "cstrike",
+			"value" : [0xA1,"*","*","*","*",0x81,0xEC,"*","*","*",0x00,0x8B,0x88,0xDC,0x00,0x00,0x00,0x53,0x83,0xF9,0x08,0x57,0x0F,0x84,"*","*","*","*",0x56]
+		},
+		{
+			"os" : "linux",
+			"mod" : "cstrike",
+			"value" : "PM_LadderMove"
+		}
+	]
+}

@@ -1,0 +1,18 @@
+{
+    "name" : "ClearAutoBuyData",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0xC6,0x81,0x20,0x08,0x00,0x00,"*",0xC3]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer16ClearAutoBuyDataEv"
+        }
+    ]
+}

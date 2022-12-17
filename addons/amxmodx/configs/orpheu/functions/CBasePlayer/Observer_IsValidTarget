@@ -1,0 +1,31 @@
+{
+    "name" : "Observer_IsValidTarget",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"arguments" :
+	[
+		{
+			"type" : "int"
+		},
+		{
+			"type" : "bool"
+		}
+	],
+	"return" :
+    {
+        "type" : "bool"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x8B,"*","*","*",0x56,0x8B,"*",0x8B,"*","*","*","*","*",0x3B,"*","*","*","*","*",0x7F,"*",0x83,"*","*",0x7C,"*",0x50,0xE8,"*","*","*","*",0x83]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer22Observer_IsValidTargetEib"
+        }
+    ]
+}

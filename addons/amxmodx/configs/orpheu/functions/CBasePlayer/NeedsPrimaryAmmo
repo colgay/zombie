@@ -1,0 +1,22 @@
+{
+    "name" : "NeedsPrimaryAmmo",
+    "class" : "CBasePlayer",
+    "library" : "mod",
+	"return" :
+    {
+        "type" : "bool"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+            "mod" : "cstrike",
+            "value" : [0x8B,"*","*","*","*","*",0x85,"*",0x75,"*",0x32,"*",0xC3,0x8B,"*","*","*","*","*",0x83,"*","*",0x75,"*",0x32,"*",0xC3]
+        },
+        {
+            "os" : "linux",
+            "mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer16NeedsPrimaryAmmoEv"
+        }
+    ]
+}

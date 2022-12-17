@@ -1,0 +1,22 @@
+{
+    "name" : "PickPrimaryCareerTaskWeapon",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"return" :
+    {
+        "type" : "const char *"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x83,"*","*",0x53,0x55,0x56,0x57,0x8B,"*","*","*","*","*",0x85,"*",0x75,"*",0x5F,0x5E,0x5D]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer27PickPrimaryCareerTaskWeaponEv"
+        }
+    ]
+}

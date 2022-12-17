@@ -1,0 +1,26 @@
+{
+    "name" : "DropShield",
+    "class" : "CBasePlayer",
+    "library" : "mod",
+    "info" : "Drop player shield",
+    "arguments" :
+    [
+	    {
+            "type" : "bool",
+            "info" : "removeSuit"
+        }
+	],
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+            "mod" : "cstrike",
+            "value" : [0x83,"*","*",0x53,0x56,0x8B,"*",0x33,"*",0x38,"*","*","*","*","*",0x0F,"*","*","*","*","*",0x8B]
+        },
+        {
+            "os" : "linux",
+            "mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer10DropShieldEb"
+        }
+    ]
+}

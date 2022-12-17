@@ -1,0 +1,20 @@
+{
+    "name" : "RemoveLevelText",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"info" : "offset 0xA1470",
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x6A,"*",0xFF,"*","*","*","*","*",0x68,"*","*","*","*",0xFF,"*","*","*","*","*",0x83,"*","*",0xFF,"*","*","*","*","*",0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x83,"*","*",0x83,"*","*"],
+			"displacement" : "-43"
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer15RemoveLevelTextEv"
+        }
+    ]
+}

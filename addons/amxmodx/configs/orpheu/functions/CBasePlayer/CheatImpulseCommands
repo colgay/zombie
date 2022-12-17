@@ -1,0 +1,24 @@
+{
+    "name" : "CheatImpulseCommands",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"arguments" :
+	[
+		{
+			"type" : "int"
+		}
+	],
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0xD9,"*","*","*","*","*",0xDC,"*","*","*","*","*",0x81,"*","*","*","*","*",0x53,0x56,0xDF,"*",0x57,0x8B,"*",0xF6,"*","*",0x0F]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer20CheatImpulseCommandsEi"
+        }
+    ]
+}

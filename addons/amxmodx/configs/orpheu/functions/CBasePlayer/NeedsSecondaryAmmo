@@ -1,0 +1,22 @@
+{
+    "name" : "NeedsSecondaryAmmo",
+    "class" : "CBasePlayer",
+    "library" : "mod",
+	"return" :
+    {
+        "type" : "bool"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+            "mod" : "cstrike",
+            "value" : [0x8B,"*","*","*","*","*",0x8B,"*","*","*","*","*",0x56,0x8B,"*","*","*","*","*","*",0x8D,"*","*",0x8D,"*","*",0x5E,0x3B,"*","*","*","*","*","*",0x0F,"*","*",0xC3]
+        },
+        {
+            "os" : "linux",
+            "mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer18NeedsSecondaryAmmoEv"
+        }
+    ]
+}

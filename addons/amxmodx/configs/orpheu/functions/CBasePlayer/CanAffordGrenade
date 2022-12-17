@@ -1,0 +1,22 @@
+{
+    "name" : "CanAffordGrenade",
+    "class" : "CBasePlayer",
+    "library" : "mod",
+	"return" :
+    {
+        "type" : "bool"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+            "mod" : "cstrike",
+            "value" : [0x81,"*","*","*","*",0x3D,"*","*","*","*",0x7C,"*",0xB0,"*",0xC3,0x3D,"*","*","*","*",0x0F,"*","*",0xC3]
+        },
+        {
+            "os" : "linux",
+            "mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer16CanAffordGrenadeEv"
+        }
+    ]
+}

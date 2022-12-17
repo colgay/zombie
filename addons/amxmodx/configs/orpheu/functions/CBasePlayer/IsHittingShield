@@ -1,0 +1,27 @@
+{
+    "name" : "IsHittingShield",
+    "class" : "CBasePlayer",
+    "library" : "mod",
+	"arguments" :
+	[
+		{
+			"type" : "const Vector *"
+		},
+		{
+			"type" : "TraceResult *"
+		}
+	],
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+            "mod" : "cstrike",
+            "value" : [0x8B,"*","*","*","*","*",0x85,"*",0x74,"*",0x83,"*","*","*","*","*","*",0x74,"*",0x8A,"*","*","*","*","*",0x84]
+        },
+        {
+            "os" : "linux",
+            "mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer15IsHittingShieldERK6VectorP11TraceResult"
+        }
+    ]
+}

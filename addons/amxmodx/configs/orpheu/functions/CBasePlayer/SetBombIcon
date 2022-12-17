@@ -1,0 +1,26 @@
+{
+    "name" : "SetBombIcon",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+    "info" : "null",
+	"arguments" :
+	[
+		{
+			"type" : "int",
+			"info" : "On Off"
+		}
+	],
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x55,0x57,0x8B,"*",0x8A,"*","*","*","*","*",0x84,"*",0x74,"*",0x8B,"*","*",0x8B,"*","*","*","*","*",0x8B,"*","*","*","*","*",0x51]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer11SetBombIconEi"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "name" : "InitRebuyData",
+    "class" : "CBasePlayer",
+    "library" : "mod",
+    "arguments" :
+    [
+	    {
+            "type" : "const char *"
+        }
+	],
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+            "mod" : "cstrike",
+            "value" : [0x53,0x8B,"*","*","*",0x56,0x57,0x85,"*",0x8B,"*",0x74,"*",0x8B,"*",0x83,"*","*",0x33]
+        },
+        {
+            "os" : "linux",
+            "mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer13InitRebuyDataEPKc"
+        }
+    ]
+}

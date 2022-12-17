@@ -1,0 +1,24 @@
+{
+    "name" : "BarnacleVictimBitten",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"arguments" :
+	[
+		{
+			"type" : "entvars_s *"
+		}
+	],
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x8B,"*","*",0x8B,"*",0x68,"*","*","*","*",0x51,0xD9]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer20BarnacleVictimBittenEP9entvars_s"
+        }
+    ]
+}

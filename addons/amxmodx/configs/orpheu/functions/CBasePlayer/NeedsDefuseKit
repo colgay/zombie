@@ -1,0 +1,22 @@
+{
+    "name" : "NeedsDefuseKit",
+    "class" : "CBasePlayer",
+    "library" : "mod",
+	"return" :
+    {
+        "type" : "bool"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+            "mod" : "cstrike",
+            "value" : [0x8A,"*","*","*","*","*",0x84,"*",0x74,"*",0x32,"*",0xC3,0x83]
+        },
+        {
+            "os" : "linux",
+            "mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer14NeedsDefuseKitEv"
+        }
+    ]
+}

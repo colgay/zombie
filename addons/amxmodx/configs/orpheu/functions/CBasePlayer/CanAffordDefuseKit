@@ -1,0 +1,23 @@
+{
+    "name" : "CanAffordDefuseKit",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"info" : "offset 0xACEB0",
+	"return" :
+    {
+        "type" : "bool"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x81,0xB9,0xCC,0x01,0x00,0x00,0xC8,0x00,0x00,0x00,0x0F,"*","*",0xC3]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer18CanAffordDefuseKitEv"
+        }
+    ]
+}

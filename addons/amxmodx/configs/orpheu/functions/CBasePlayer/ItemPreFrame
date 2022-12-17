@@ -1,0 +1,18 @@
+{
+    "name" : "ItemPreFrame",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0xD9,"*","*","*","*","*",0xD8,"*","*","*","*","*",0xDF,"*",0x25,"*","*","*","*",0x74,"*",0x8B,"*","*","*","*","*",0x85,"*",0x74,"*",0x8B,"*",0xFF,"*","*","*","*","*",0xC3]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer12ItemPreFrameEv"
+        }
+    ]
+}

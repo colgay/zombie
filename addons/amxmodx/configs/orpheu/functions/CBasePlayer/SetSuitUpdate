@@ -1,0 +1,32 @@
+{
+    "name" : "SetSuitUpdate",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"info" : "offset 0xA43D0",
+	"arguments" :
+	[
+		{
+			"type" : "char *"
+		},
+		{
+			"type" : "int"
+		},
+		{
+			"type" : "int"
+		}
+	],
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0xDC,"*","*","*","*","*",0x5F,0x5E,0xD9,"*","*","*","*","*",0x5D,0x5B,0x83,"*","*",0xC3,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0xC2],
+			"displacement" : "27"
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer13SetSuitUpdateEPcii"
+        }
+    ]
+}

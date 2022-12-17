@@ -1,0 +1,41 @@
+{
+	"name" : "PM_ClipVelocity",
+	"library" : "mod",
+	"arguments" : 
+	[
+		{
+			"type" : "Vector *",
+			"info" : "in"
+		},
+		{
+			"type" : "Vector *",
+			"info" : "normal"
+		},
+		{
+			"type" : "Vector *",
+			"info" : "out"
+		},
+		{
+			"type" : "float",
+			"info" : "overbounce"
+		}
+	],
+	"return" :
+	{
+		"type" : "int",
+		"info" : "Blocked flags: 1 - floor; 2 - step / wall"
+	},
+	"identifiers" :
+	[
+		{
+			"os" : "windows",
+			"mod" : "cstrike",
+			"value" : [0x81,0xEC,0x54,0x01,0x00,0x00,0x8B,0x15,"*","*","*","*",0x53,0x55,0x33,0xED,0x8B,0x42,0x5C,0x56,0x89,0x44,0x24,0x18]
+		},
+		{
+			"os" : "linux",
+			"mod" : "cstrike",
+			"value" : "PM_ClipVelocity"
+		}
+	]
+}

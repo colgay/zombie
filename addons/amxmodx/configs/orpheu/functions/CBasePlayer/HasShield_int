@@ -1,0 +1,22 @@
+{
+    "name" : "HasShield_int",
+	"class" : "CBasePlayer",
+    "library" : "mod",
+	"return" :
+    {
+        "type" : "int"
+    },
+    "identifiers" :
+    [
+        {
+            "os" : "windows",
+			"mod" : "cstrike",
+            "value" : [0x8A,0x81,0xFB,0x07,0x00,0x00,0xC3]
+        },
+        {
+            "os" : "linux",
+			"mod" : "cstrike",
+            "value" : "_ZN11CBasePlayer9HasShieldEv"
+        }
+    ]
+}
