@@ -8,170 +8,8 @@
 
 #pragma ctrlchar '\'
 
-new g_PlayerClass[MAX_PLAYERS + 1] = {@null, ...};
+new g_oPlayerClass[MAX_PLAYERS + 1] = {@null, ...};
 new g_fwChangePlayerClass, g_fwChangePlayerClassPost, g_fwRet;
-
-// --------- [AMXX Forwards] ----------
-
-public plugin_init()
-{
-	register_plugin("[OO] Player Class", "0.1", "holla");
-
-	register_forward(FM_EmitSound, "OnEmitSound");
-	RegisterHam(Ham_CS_Player_ResetMaxSpeed, "player", "OnPlayerResetMaxspeed_Post", 1);
-	RegisterHam(Ham_Spawn, "player", "OnPlayerSpawn_Post", 1)
-
-	static weaponname[32];
-	for (new i = CSW_P228; i <= CSW_P90; i++)
-	{
-		get_weaponname(i, weaponname, charsmax(weaponname));
-		if (weaponname[0])
-			RegisterHam(Ham_Item_Deploy, weaponname, "OnItemDeploy_Post", 1);
-	}
-
-	g_fwChangePlayerClass = CreateMultiForward("oo_on_playerclass_change", ET_CONTINUE, FP_CELL, FP_STRING, FP_CELL);
-	g_fwChangePlayerClassPost = CreateMultiForward("oo_on_playerclass_change_post", ET_IGNORE, FP_CELL, FP_STRING, FP_CELL);
-}
-
-public OnPlayerSpawn_Post(id)
-{
-	if (!is_user_alive(id))
-		return;
-	
-	new class_o = g_PlayerClass[id];
-	if (class_o != @null)
-		oo_call(class_o, "SetProps");
-}
-
-public OnPlayerResetMaxspeed_Post(id)
-{
-	new class_o = g_PlayerClass[id];
-	if (class_o != @null)
-		return oo_call(class_o, "ChangeMaxSpeed") ? HAM_HANDLED : HAM_IGNORED;
-
-	return HAM_IGNORED;
-}
-
-public OnItemDeploy_Post(ent)
-{
-	if (!pev_valid(ent))
-		return FMRES_IGNORED;
-	
-	new id = get_ent_data_entity(ent, "CBasePlayerItem", "m_pPlayer");
-	if (!is_user_alive(id))
-		return FMRES_IGNORED;
-
-	new class_o = g_PlayerClass[id];
-	if (class_o != @null)
-		return oo_call(class_o, "ChangeWeaponModel", ent) ? FMRES_HANDLED : FMRES_IGNORED;
-
-	return FMRES_IGNORED;
-}
-
-public OnEmitSound(id, channel, const sample[], Float:volume, Float:attn, flags, pitch)
-{
-	if (!is_user_alive(id))
-		return FMRES_IGNORED;
-
-	new class_o = g_PlayerClass[id];
-	if (class_o != @null)
-		return oo_call(class_o, "ChangeSound", channel, sample, volume, attn, flags, pitch) ? FMRES_SUPERCEDE : FMRES_IGNORED;
-
-	return FMRES_IGNORED;
-}
-
-public client_putinserver(id)
-{
-	g_PlayerClass[id] = @null;
-}
-
-public client_disconnected(id)
-{
-	if (g_PlayerClass[id] != @null)
-	{
-		oo_delete(g_PlayerClass[id]);
-		g_PlayerClass[id] = @null;
-	}
-}
-
-// ---------- [AMXX Natives] ----------
-
-public plugin_natives()
-{
-	register_library("oo_playerclass");
-
-	register_native("oo_playerclass_change", "native_playerclass_change");
-	register_native("oo_playerclass_get", "native_playerclass_get");
-	register_native("oo_playerclass_is", "native_playerclass_is");
-}
-
-public native_playerclass_change()
-{
-	new id = get_param(1);
-	if (!is_user_connected(id))
-	{
-		log_error(AMX_ERR_NATIVE, "Player (%d) is not connected", id);
-		return @null;
-	}
-
-	static class[32];
-	get_string(2, class, charsmax(class));
-
-	if (class[0] == '\0')
-	{
-		if (g_PlayerClass[id] != @null)
-		{
-			oo_delete(g_PlayerClass[id]);
-			g_PlayerClass[id] = @null;
-		}
-
-		return g_PlayerClass[id];
-	}
-
-	if (!oo_class_exists(class))
-	{
-		log_error(AMX_ERR_NATIVE, "Class (%s) does not exists", class);
-		return @null;
-	}
-
-	if (!oo_subclass_of(class, "PlayerClass"))
-	{
-		log_error(AMX_ERR_NATIVE, "Class (%s) is not the subclass of (PlayerClass)", class);
-		return @null;
-	}
-
-	return ChangePlayerClass(id, class, bool:get_param(3));
-}
-
-public native_playerclass_get()
-{
-	new id = get_param(1);
-	if (!is_user_connected(id))
-	{
-		log_error(AMX_ERR_NATIVE, "Player (%d) is not connected", id);
-		return @null;
-	}
-
-	return g_PlayerClass[id];
-}
-
-public native_playerclass_is()
-{
-	new id = get_param(1);
-	if (!is_user_connected(id))
-	{
-		log_error(AMX_ERR_NATIVE, "Player (%d) is not connected", id);
-		return @null;
-	}
-
-	static class[32];
-	get_string(2, class, charsmax(class));
-
-	if (g_PlayerClass[id] == @null)
-		return (class[0] == '\0') ? true : false;
-
-	return oo_isa(g_PlayerClass[id], class, bool:get_param(3));
-}
 
 // ---------- [OO Functions] ----------
 
@@ -211,6 +49,168 @@ public oo_init()
 		oo_mthd(cl, "ChangeSound", @int{channel}, @str{sample}, @fl{vol}, @fl{attn}, @int{flags}, @int{pitch});
 		oo_mthd(cl, "ChangeMaxSpeed");
 	}
+}
+
+// --------- [AMXX Forwards] ----------
+
+public plugin_init()
+{
+	register_plugin("[OO] Player Class", "0.1", "holla");
+
+	register_forward(FM_EmitSound, "OnEmitSound");
+	RegisterHam(Ham_CS_Player_ResetMaxSpeed, "player", "OnPlayerResetMaxspeed_Post", 1);
+	RegisterHam(Ham_Spawn, "player", "OnPlayerSpawn_Post", 1)
+
+	static weaponname[32];
+	for (new i = CSW_P228; i <= CSW_P90; i++)
+	{
+		get_weaponname(i, weaponname, charsmax(weaponname));
+		if (weaponname[0])
+			RegisterHam(Ham_Item_Deploy, weaponname, "OnItemDeploy_Post", 1);
+	}
+
+	g_fwChangePlayerClass = CreateMultiForward("oo_on_playerclass_change", ET_CONTINUE, FP_CELL, FP_STRING, FP_CELL);
+	g_fwChangePlayerClassPost = CreateMultiForward("oo_on_playerclass_change_post", ET_IGNORE, FP_CELL, FP_STRING, FP_CELL);
+}
+
+public OnPlayerSpawn_Post(id)
+{
+	if (!is_user_alive(id))
+		return;
+	
+	new class_o = g_oPlayerClass[id];
+	if (class_o != @null)
+		oo_call(class_o, "SetProps");
+}
+
+public OnPlayerResetMaxspeed_Post(id)
+{
+	new class_o = g_oPlayerClass[id];
+	if (class_o != @null)
+		return oo_call(class_o, "ChangeMaxSpeed") ? HAM_HANDLED : HAM_IGNORED;
+
+	return HAM_IGNORED;
+}
+
+public OnItemDeploy_Post(ent)
+{
+	if (!pev_valid(ent))
+		return FMRES_IGNORED;
+	
+	new id = get_ent_data_entity(ent, "CBasePlayerItem", "m_pPlayer");
+	if (!is_user_alive(id))
+		return FMRES_IGNORED;
+
+	new class_o = g_oPlayerClass[id];
+	if (class_o != @null)
+		return oo_call(class_o, "ChangeWeaponModel", ent) ? FMRES_HANDLED : FMRES_IGNORED;
+
+	return FMRES_IGNORED;
+}
+
+public OnEmitSound(id, channel, const sample[], Float:volume, Float:attn, flags, pitch)
+{
+	if (!is_user_alive(id))
+		return FMRES_IGNORED;
+
+	new class_o = g_oPlayerClass[id];
+	if (class_o != @null)
+		return oo_call(class_o, "ChangeSound", channel, sample, volume, attn, flags, pitch) ? FMRES_SUPERCEDE : FMRES_IGNORED;
+
+	return FMRES_IGNORED;
+}
+
+public client_putinserver(id)
+{
+	g_oPlayerClass[id] = @null;
+}
+
+public client_disconnected(id)
+{
+	if (g_oPlayerClass[id] != @null)
+	{
+		oo_delete(g_oPlayerClass[id]);
+		g_oPlayerClass[id] = @null;
+	}
+}
+
+// ---------- [AMXX Natives] ----------
+
+public plugin_natives()
+{
+	register_library("oo_playerclass");
+
+	register_native("oo_playerclass_change", "native_playerclass_change");
+	register_native("oo_playerclass_get", "native_playerclass_get");
+	register_native("oo_playerclass_is", "native_playerclass_is");
+}
+
+public native_playerclass_change()
+{
+	new id = get_param(1);
+	if (!is_user_connected(id))
+	{
+		log_error(AMX_ERR_NATIVE, "Player (%d) is not connected", id);
+		return @null;
+	}
+
+	static class[32];
+	get_string(2, class, charsmax(class));
+
+	if (class[0] == '\0')
+	{
+		if (g_oPlayerClass[id] != @null)
+		{
+			oo_delete(g_oPlayerClass[id]);
+			g_oPlayerClass[id] = @null;
+		}
+
+		return g_oPlayerClass[id];
+	}
+
+	if (!oo_class_exists(class))
+	{
+		log_error(AMX_ERR_NATIVE, "Class (%s) does not exists", class);
+		return @null;
+	}
+
+	if (!oo_subclass_of(class, "PlayerClass"))
+	{
+		log_error(AMX_ERR_NATIVE, "Class (%s) is not the subclass of (PlayerClass)", class);
+		return @null;
+	}
+
+	return ChangePlayerClass(id, class, bool:get_param(3));
+}
+
+public native_playerclass_get()
+{
+	new id = get_param(1);
+	if (!is_user_connected(id))
+	{
+		log_error(AMX_ERR_NATIVE, "Player (%d) is not connected", id);
+		return @null;
+	}
+
+	return g_oPlayerClass[id];
+}
+
+public native_playerclass_is()
+{
+	new id = get_param(1);
+	if (!is_user_connected(id))
+	{
+		log_error(AMX_ERR_NATIVE, "Player (%d) is not connected", id);
+		return @null;
+	}
+
+	static class[32];
+	get_string(2, class, charsmax(class));
+
+	if (g_oPlayerClass[id] == @null)
+		return (class[0] == '\0') ? true : false;
+
+	return oo_isa(g_oPlayerClass[id], class, bool:get_param(3));
 }
 
 
@@ -478,22 +478,22 @@ ChangePlayerClass(id, const class[], bool:set_props)
 	if (g_fwRet >= PLUGIN_HANDLED)
 		return @null;
 
-	if (g_PlayerClass[id] != @null)
+	if (g_oPlayerClass[id] != @null)
 	{
-		oo_delete(g_PlayerClass[id]);
-		g_PlayerClass[id] = @null;
+		oo_delete(g_oPlayerClass[id]);
+		g_oPlayerClass[id] = @null;
 	}
 
-	g_PlayerClass[id] = oo_new(class, id);
+	g_oPlayerClass[id] = oo_new(class, id);
 
-	if (g_PlayerClass[id] == @null)
+	if (g_oPlayerClass[id] == @null)
 		return @null;
 
 	if (set_props)
-		oo_call(g_PlayerClass[id], "SetProps");
+		oo_call(g_oPlayerClass[id], "SetProps");
 
 	ExecuteForward(g_fwChangePlayerClassPost, g_fwRet, id, class, set_props);
-	return g_PlayerClass[id];
+	return g_oPlayerClass[id];
 }
 
 stock bool:PrecachePlayerModel(const model[])
